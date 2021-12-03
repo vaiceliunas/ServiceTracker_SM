@@ -33,26 +33,30 @@ namespace KinlySmartMonitoringAssignment.Controllers
         [HttpGet("{serviceName}")]
         public ActionResult<Service> Get(string serviceName)
         {
+            _serviceVal.IsNameValid(serviceName, true, ModelState);
+
+            if (ModelState.ErrorCount > 0)
+                return BadRequest(ModelState);
+
             var result = _serviceRep.GetService(serviceName);
             return Ok(result);
         }
 
         [HttpGet("byLabel")]
-        public ActionResult<Service> GetWithLabels(Label label)
+        public ActionResult<Service> GetWithLabels(string key, string value)
         {
-            //_serviceVal.IsLabelParamValid(label, ModelState);
-            //if (ModelState.ErrorCount > 0)
-            //    return BadRequest(ModelState);
+            _serviceVal.IsKeyValuePairValid(key, value, ModelState);
+            if (ModelState.ErrorCount > 0)
+                return BadRequest(ModelState);
 
-            //var labelSplit = label.Split(':');
-            //var labelParam = new Label()
-            //{
-            //    LabelKey = labelSplit[0],
-            //    LabelValue = labelSplit[1]
-            //};
+            var labelParam = new Label()
+            {
+                LabelKey = key,
+                LabelValue = value
+            };
 
-            //var result = _serviceRep.GetServicesByLabel(labelParam);
-            return Ok(null);
+            var result = _serviceRep.GetServicesByLabel(labelParam);
+            return Ok(result);
         }
 
         // POST api/values
@@ -62,7 +66,6 @@ namespace KinlySmartMonitoringAssignment.Controllers
             if (service == null)
                 return BadRequest();
 
-            _serviceVal.IsIdentityNotSet(service.Id, ModelState);
             _serviceVal.IsEmailValid(service.MaintainerEmail, ModelState);
             _serviceVal.IsNameValid(service.Name, false, ModelState);
             _serviceVal.IsPortValid(service.Port, ModelState);
@@ -97,9 +100,6 @@ namespace KinlySmartMonitoringAssignment.Controllers
         [HttpDelete]
         public ActionResult Delete(string serviceName)
         {
-            if (string.IsNullOrEmpty(serviceName))
-                return BadRequest();
-
             _serviceVal.IsNameValid(serviceName, true, ModelState);
 
             if (ModelState.ErrorCount > 0)

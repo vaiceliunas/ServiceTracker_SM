@@ -144,12 +144,11 @@ namespace KinlySmartMonitoringAssignment.Models.Validators
             return modelState.ErrorCount > 0;
         }
 
-        public bool IsLabelParamValid(string label, ModelStateDictionary modelState)
+        public bool IsKeyValuePairValid(string key, string value, ModelStateDictionary modelState)
         {
-            var split = label.Split(':');
-            if (split.Length != 2)
+            if(string.IsNullOrEmpty(key) || string.IsNullOrEmpty(value))
             {
-                modelState.AddModelError("Label parameter", "Unable to parse label parameter {" + label + "}");
+                modelState.AddModelError("Key/Value pair for label", "Unable to parse key/value pair {" + key + "/" + value + "}");
                 return false;
             }
 
