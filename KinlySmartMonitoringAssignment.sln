@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31729.503
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RestApi", "KinlySmartMonitoringAssignment\RestApi.csproj", "{7FCE324F-511A-41F2-830F-DC6B7C95D118}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RestApi", "RestApi\RestApi.csproj", "{7FCE324F-511A-41F2-830F-DC6B7C95D118}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RestApiTests", "RestApiTests\RestApiTests.csproj", "{D8AC4BE2-80F0-4238-9740-774C0EE399A6}"
 EndProject
