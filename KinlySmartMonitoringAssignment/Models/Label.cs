@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using KinlySmartMonitoringAssignment.Models;
 
 #nullable disable
 
-namespace KinlySmartMonitoringAssignment.Models
+namespace RestApi.Models
 {
     public partial class Label
     {

@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using KinlySmartMonitoringAssignment.Models;
 using KinlySmartMonitoringAssignment.Models.Validators;
 using KinlySmartMonitoringAssignment.Services.Interfaces;
+using RestApi.Models;
 
 namespace KinlySmartMonitoringAssignment.Controllers
 {
@@ -39,6 +40,9 @@ namespace KinlySmartMonitoringAssignment.Controllers
                 return BadRequest(ModelState);
 
             var result = _serviceRep.GetService(serviceName);
+            if (result == null)
+                return NotFound();
+
             return Ok(result);
         }
 
@@ -56,6 +60,9 @@ namespace KinlySmartMonitoringAssignment.Controllers
             };
 
             var result = _serviceRep.GetServicesByLabel(labelParam);
+            if(!result.Any())
+                return NotFound();
+
             return Ok(result);
         }
 

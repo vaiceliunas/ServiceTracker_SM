@@ -1,6 +1,7 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
+using RestApi.Models;
 
 #nullable disable
 
@@ -42,6 +43,8 @@ namespace KinlySmartMonitoringAssignment.Models
             modelBuilder.Entity<Service>(entity =>
             {
                 entity.ToTable("Service");
+
+                entity.HasMany(t => t.Labels).WithOne().OnDelete(DeleteBehavior.Cascade);
 
                 entity.Property(e => e.MaintainerEmail)
                     .IsRequired()

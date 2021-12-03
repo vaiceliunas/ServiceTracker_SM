@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using KinlySmartMonitoringAssignment.Models;
+using RestApi.Models;
 
 namespace KinlySmartMonitoringAssignment.Services.Interfaces
 {

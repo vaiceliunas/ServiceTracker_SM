@@ -6,6 +6,7 @@ using KinlySmartMonitoringAssignment.Models;
 using KinlySmartMonitoringAssignment.Services.Interfaces;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.EntityFrameworkCore;
+using RestApi.Models;
 
 namespace KinlySmartMonitoringAssignment.Services
 {
@@ -34,7 +35,11 @@ namespace KinlySmartMonitoringAssignment.Services
         public void DeleteService(string serviceName)
         {
             var obj = _context.Services.FirstOrDefault(t => t.Name == serviceName);
-            if (obj != null) _context.Services.Remove(obj);
+            if (obj != null)
+            {
+                _context.Labels.RemoveRange(_context.Labels.Where(t=> t.ServiceId == obj.Id));
+                _context.Services.Remove(obj);
+            }
             _context.SaveChanges();
         }
 

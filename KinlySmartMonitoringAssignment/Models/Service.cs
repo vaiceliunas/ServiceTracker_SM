@@ -1,5 +1,7 @@
-﻿using System;
+﻿using RestApi.Models;
+using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 #nullable disable
 
@@ -11,12 +13,17 @@ namespace KinlySmartMonitoringAssignment.Models
         {
             Labels = new HashSet<Label>();
         }
-
+        [Key]
         public int Id { get; set; }
         public string Name { get; set; }
         public int Port { get; set; }
         public string MaintainerEmail { get; set; }
 
         public virtual ICollection<Label> Labels { get; set; }
+
+        public void SetId(int id)
+        {
+            this.Id = id;
+        }
     }
 }

@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using KinlySmartMonitoringAssignment.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
+using RestApi.Models;
 
 namespace KinlySmartMonitoringAssignment.Models.Validators
 {
