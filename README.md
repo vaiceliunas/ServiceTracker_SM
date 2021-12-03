@@ -6,7 +6,7 @@ Service documentation is posted as html file in root/Documentation and was build
 System was built to use MS SQL database. In order to run it locally, you may need to run sql server and run create db scripts or import .bak file. Scripts, their order and bak file are all in root/db scripts folder.
 In order to run it with existing MS SQL server, run the scripts inside the server and adjust connection string.
 
-Unit tests are in the same solution, but different project. It was build using xUnit and MOQ.
+Unit are in RestApiTests project. They were built using xUnit.
 
 All the methods are built using these headers [GET POST PATCH DELETE]
 Only method that was modified was getting services based on label key value pair. In order to call it, you will need to set specific url (see in documentation)
